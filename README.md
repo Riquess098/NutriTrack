@@ -3,6 +3,9 @@
 O **NutriTrack** é uma aplicação completa (Full-Stack) projetada para auxiliar no acompanhamento nutricional, cálculo de gasto calórico diário (TMB) e registro de refeições. Desenvolvido com uma arquitetura moderna e desacoplada, o sistema divide-se em uma API robusta no Back-end e uma interface responsiva no Front-end.
 
 ---
+## Documentação
+
+Os documentos do projeto estão na pasta `/docs`.
 
 ## 🛠️ Arquitetura e Tecnologias Utilizadas
 
