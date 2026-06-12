@@ -1,0 +1,32 @@
+<main class="main auth-main">
+  <div class="auth-box">
+    
+    <div class="logo-container">
+      <img src="logonutritrack.png" alt="Logo do NutriTrack" class="logo-projeto">
+    </div>
+
+    <h1 class="heading">Criar Conta</h1>
+    <form (ngSubmit)="cadastrar()" class="form">
+      
+      <div class="input__wrapper auth-input">
+        <input type="text" name="nome" [(ngModel)]="usuario.nome" placeholder="Nome Completo" required>
+      </div>
+
+      <div class="input__wrapper auth-input">
+        <input type="email" name="email" [(ngModel)]="usuario.email" placeholder="E-mail" required>
+      </div>
+
+      <div class="input__wrapper auth-input">
+        <input type="password" name="senha" [(ngModel)]="usuario.senha" placeholder="Senha" required>
+      </div>
+
+      <div class="input__wrapper auth-input">
+        <input type="password" name="confirmaSenha" [(ngModel)]="confirmaSenha" placeholder="Confirmar Senha" required>
+      </div>
+
+      <button type="submit" class="button auth-button">Cadastrar</button>
+      
+      <p class="auth-link">Já tem uma conta? <a routerLink="/login">Faça login</a></p>
+    </form>
+  </div>
+</main>

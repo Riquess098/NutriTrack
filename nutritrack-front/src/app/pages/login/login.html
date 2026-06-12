@@ -1,0 +1,74 @@
+<main class="main auth-main position-relative" style="min-height: 100vh;">
+  
+  <div class="auth-box">
+    
+    <div class="logo-container">
+      <img src="logonutritrack.png" alt="Logo do NutriTrack" class="logo-projeto">
+    </div>
+
+    <ng-container *ngIf="etapaAtual === 'login'">
+      <h1 class="heading">Login</h1>
+      <div class="form">
+        
+        <div class="input__wrapper auth-input">
+          <input type="email" name="email" [(ngModel)]="credenciais.email" placeholder="E-mail" required>
+        </div>
+
+        <div class="input__wrapper auth-input">
+          <input type="password" name="senha" [(ngModel)]="credenciais.senha" placeholder="Senha" required>
+        </div>
+
+        <div class="auth-options">
+          <a href="#" (click)="irParaEsqueciSenha($event)" class="forgot-password">Esqueceu a senha?</a>
+        </div>
+
+        <button type="button" class="button auth-button" (click)="fazerLogin()">Entrar</button>
+        
+        <p class="auth-link">Não tem uma conta? <a routerLink="/cadastro">Cadastre-se</a></p>
+      </div>
+    </ng-container>
+
+    <ng-container *ngIf="etapaAtual === 'solicitar'">
+      <h1 class="heading" style="font-size: 1.5rem; margin-bottom: 5px;">Recuperar Senha</h1>
+      <p style="text-align: center; font-size: 0.85rem; color: #6c757d; margin-bottom: 20px;">
+        Digite seu e-mail para receber o código de 6 dígitos.
+      </p>
+
+      <div class="form">
+        <div class="input__wrapper auth-input">
+          <input type="email" name="emailRecuperacao" [(ngModel)]="emailRecuperacao" placeholder="Seu e-mail cadastrado" required>
+        </div>
+
+        <button type="button" class="button auth-button" (click)="enviarCodigo()">Enviar Código</button>
+        
+        <p class="auth-link" style="text-align: center; margin-top: 15px;">
+          <a href="#" (click)="voltarParaLogin($event)">Voltar para o Login</a>
+        </p>
+      </div>
+    </ng-container>
+
+    <ng-container *ngIf="etapaAtual === 'redefinir'">
+      <h1 class="heading" style="font-size: 1.5rem; margin-bottom: 5px;">Nova Senha</h1>
+      <p style="text-align: center; font-size: 0.85rem; color: #6c757d; margin-bottom: 20px;">
+        O código foi enviado para <br><strong>{{ emailRecuperacao }}</strong>
+      </p>
+
+      <div class="form">
+        <div class="input__wrapper auth-input">
+          <input type="text" name="codigoDigitado" [(ngModel)]="codigoDigitado" placeholder="Código de 6 dígitos" required maxlength="6" style="text-align: center; letter-spacing: 5px; font-weight: bold;">
+        </div>
+
+        <div class="input__wrapper auth-input">
+          <input type="password" name="novaSenhaDigitada" [(ngModel)]="novaSenhaDigitada" placeholder="Sua nova senha" required>
+        </div>
+
+        <button type="button" class="button auth-button" (click)="salvarNovaSenha()">Salvar Senha</button>
+        
+        <p class="auth-link" style="text-align: center; margin-top: 15px;">
+          <a href="#" (click)="voltarParaLogin($event)">Cancelar</a>
+        </p>
+      </div>
+    </ng-container>
+
+  </div>
+</main>

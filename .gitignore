@@ -1,0 +1,6 @@
+# Ignorar dependências pesadas
+**/node_modules/
+**/target/
+**/.angular/
+**/.idea/
+**/.vscode/

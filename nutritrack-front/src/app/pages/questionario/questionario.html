@@ -1,0 +1,95 @@
+<main class="main auth-main">
+  <div class="auth-box" style="max-width: 500px;">
+    
+    <div class="logo-container">
+      <img src="logonutritrack.png" alt="Logo do NutriTrack" class="logo-projeto">
+    </div>
+
+    <h1 class="heading">Complete seu Perfil</h1>
+    <p style="color: var(--color-gray-dark); margin-bottom: 25px;">
+      Precisamos de alguns dados para calcular sua meta ideal.
+    </p>
+    
+    <form (ngSubmit)="calcularGastoCalorico()" class="form">
+      
+      <div class="form__item" style="margin-bottom: 20px; text-align: left;">
+        <h2 class="heading" style="font-size: 20px;">Qual é o seu objetivo?</h2>
+        <select id="objetivo" name="objetivo" [(ngModel)]="dados.objetivo" class="auth-input" style="width: 100%; padding: 15px; border-radius: 8px; border: 1px solid var(--color-gray-lighter); font-size: 16px; background-color: white;" required>
+          <option value="" disabled selected>Selecione uma opção...</option>
+          <option value="perder">Perder Peso</option>
+          <option value="manter">Manter Peso</option>
+          <option value="ganhar">Ganhar Massa (Hipertrofia)</option>
+        </select>
+      </div>
+
+      <div class="inputs-group" style="justify-content: space-between; gap: 10px; margin-bottom: 20px;">
+        <div class="input__wrapper auth-input" style="margin: 0;">
+          <input type="number" name="idade" [(ngModel)]="dados.idade" placeholder="Idade" inputmode="numeric" required>
+        </div>
+        <div class="input__wrapper auth-input" style="margin: 0;">
+          <input type="number" name="peso" [(ngModel)]="dados.peso" placeholder="Peso (kg)" step="0.1" inputmode="decimal" required>
+        </div>
+        <div class="input__wrapper auth-input" style="margin: 0;">
+          <input type="number" name="altura" [(ngModel)]="dados.altura" placeholder="Altura (cm)" inputmode="numeric" required>
+        </div>
+      </div>
+
+      <div class="form__item" style="margin-bottom: 20px; text-align: left;">
+        <h2 class="heading" style="font-size: 20px;">Sexo Biológico</h2>
+        <ul class="switcher">
+          <li class="switcher__item">
+            <input id="gender-male" name="gender" value="male" type="radio" [(ngModel)]="dados.sexo" required>
+            <label for="gender-male">Masculino</label>
+          </li>
+          <li class="switcher__item">
+            <input id="gender-female" name="gender" value="female" type="radio" [(ngModel)]="dados.sexo" required>
+            <label for="gender-female">Feminino</label>
+          </li>
+        </ul>
+      </div>
+
+      <div class="form__item" style="margin-bottom: 25px; text-align: left;">
+        <h2 class="heading" style="font-size: 20px;">Nível de Atividade</h2>
+        <select id="atividade" name="atividade" [(ngModel)]="dados.atividade" class="auth-input" style="width: 100%; padding: 15px; border-radius: 8px; border: 1px solid var(--color-gray-lighter); font-size: 16px; background-color: white;" required>
+          <option value="" disabled selected>Como é a sua rotina?</option>
+          <option value="min">Sedentário (Nenhum exercício)</option>
+          <option value="low">Leve (Exercício 1 a 3 dias/semana)</option>
+          <option value="medium">Moderado (Exercício 3 a 5 dias/semana)</option>
+          <option value="high">Ativo (Exercício 6 a 7 dias/semana)</option>
+          <option value="max">Muito Ativo (Trabalho físico + Treino pesado)</option>
+        </select>
+      </div>
+
+      <button type="submit" class="button auth-button">Finalizar Cadastro</button>
+    </form>
+  </div>
+
+  <div id="modal-meta" class="modal-overlay" [style.display]="mostrarModal ? 'flex' : 'none'">
+    <div class="modal-content auth-box">
+      <h2 class="heading" style="color: var(--color-accent); font-size: 24px;">Seu Gasto Calórico</h2>
+      
+      <p style="color: var(--color-gray-dark); margin-bottom: 15px;">
+        Seu gasto calórico total (basal + rotina) é:<br>
+        <strong style="color: var(--color-accent); font-size: 32px;">{{ gastoCaloricoTotal }}</strong> <span style="font-size: 18px;">kcal/dia</span>
+      </p>
+      
+      <div style="text-align: left; margin-bottom: 20px;">
+        <label for="escolha-deficit" style="font-weight: bold; display: block; margin-bottom: 8px;">Ajuste sua Meta Diária:</label>
+        <select id="escolha-deficit" name="ajusteDeficit" [(ngModel)]="ajusteDeficit" (change)="atualizarMetaFinal()" class="auth-input" style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid var(--color-gray-lighter); font-size: 16px;">
+          <option value="0">Manter o peso atual (Mesmas calorias)</option>
+          <option value="-200">Déficit Leve (-200 calorias)</option>
+          <option value="-500">Déficit Agressivo (-500 calorias)</option>
+          <option value="200">Superávit Leve (+200 calorias)</option>
+          <option value="500">Superávit Agressivo (+500 calorias)</option>
+        </select>
+      </div>
+
+      <p style="font-size: 18px; margin-bottom: 20px;">
+        Sua meta no app será: <br>
+        <strong style="color: var(--color-warning); font-size: 28px;">{{ metaFinal }}</strong> <strong>kcal</strong>
+      </p>
+
+      <button (click)="salvarMetaFinal()" type="button" class="button auth-button" style="margin-top: 10px;">Salvar Meta e Começar</button>
+    </div>
+  </div>
+</main>
