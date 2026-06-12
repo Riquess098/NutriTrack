@@ -42,7 +42,7 @@ export class DashboardComponent implements OnInit {
   totalCaloriasDiaSelecionado: number = 0;
   refeicoesDoDia: any = { 'Café da Manhã': [], 'Almoço': [], 'Lanche': [], 'Jantar': [] };
 
-  mostrandoComunidade: boolean = false; // <-- Variável da Comunidade
+  mostrandoComunidade: boolean = false; 
 
   constructor(
     private http: HttpClient, 
@@ -75,7 +75,6 @@ export class DashboardComponent implements OnInit {
     }
   }
 
-  // Função para gerar o cabeçalho de liberação do túnel
   private getHeaders() {
     return new HttpHeaders()
       .set('bypass-tunnel-reminder', 'true')

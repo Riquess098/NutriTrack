@@ -1,7 +1,7 @@
 package com.nutritrack.api.model;
 
 import jakarta.persistence.*;
-import com.fasterxml.jackson.annotation.JsonIgnore; // Importação adicionada aqui
+import com.fasterxml.jackson.annotation.JsonIgnore; 
 import java.time.LocalDateTime;
 
 @Entity
@@ -14,16 +14,16 @@ public class Refeicao {
 
     private String nomeAlimento;
     private Integer calorias;
-    private String tipoRefeicao; // Ex: "Café da Manhã"
+    private String tipoRefeicao; 
     private LocalDateTime dataRegistro;
 
-    // Relacionamento N para 1 (Muitas refeições pertencem a um usuário)
-    @JsonIgnore // A mágica acontece aqui: impede o erro de StackOverflow na hora de devolver o JSON
+    // Relacionamento = Muitas refeições pertencem a um usuário
+    @JsonIgnore 
     @ManyToOne
     @JoinColumn(name = "usuario_id")
     private Usuario usuario;
 
-    // Construtor para definir a data automaticamente
+    // Definir a data automaticamente
     @PrePersist
     protected void onCreate() {
         dataRegistro = LocalDateTime.now();

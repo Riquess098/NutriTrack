@@ -26,7 +26,6 @@ export class LoginComponent {
     private cdr: ChangeDetectorRef 
   ) {}
 
-  // Cria o header uma vez para ser usado em todas as requisições
   private getHeaders() {
     return new HttpHeaders()
       .set('bypass-tunnel-reminder', 'true')
@@ -102,7 +101,6 @@ export class LoginComponent {
       novaSenha: this.novaSenhaDigitada
     };
 
-    // COMO DEVE FICAR (CORRETO):
 this.http.post(' http://localhost:8080/api/auth/redefinir-senha', payload, { headers: this.getHeaders(), responseType: 'text' })
       .subscribe({
         next: (res) => {

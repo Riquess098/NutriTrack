@@ -21,10 +21,10 @@ public class Usuario {
     private String activity;
     private String objetivo;
     
-    // Campo para salvar a meta no banco
+    // Salvar a meta no banco
     private Integer metaDiaria;
 
-    // NOVO CAMPO: Para salvar o código de 6 dígitos temporário
+    // Salvar o código de 6 dígitos temporário
     private String codigoRecuperacao;
 
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
@@ -55,7 +55,7 @@ public class Usuario {
     public Integer getMetaDiaria() { return metaDiaria; }
     public void setMetaDiaria(Integer metaDiaria) { this.metaDiaria = metaDiaria; }
     
-    // Novos Getters e Setters do Código de Recuperação
+    //Getters e Setters do Código de Recuperação
     public String getCodigoRecuperacao() { return codigoRecuperacao; }
     public void setCodigoRecuperacao(String codigoRecuperacao) { this.codigoRecuperacao = codigoRecuperacao; }
     

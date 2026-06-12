@@ -1,14 +1,10 @@
-/* =========================================================
-   CORES INJETADAS DIRETAMENTE (Sem variáveis para o Angular não quebrar)
-   Azul Escuro do Login: #23275c
-   ========================================================= */
 
-/* CLASSES DE TEMA (FORÇADAS) */
+
+
 .bg-login-blue { background-color: #23275c !important; color: white !important; }
 .text-login-blue { color: #23275c !important; }
 .btn-login-blue { background-color: #23275c !important; color: white !important; border: none; }
 
-/* BOTÃO DE CONTORNO (Gerar Foto) */
 .btn-outline-login { 
   border-color: #23275c !important; 
   color: #23275c !important; 
@@ -20,7 +16,6 @@
   color: white !important; 
 }
 
-/* SUBSTITUINDO O AZUL CLARO DO "HOJE / 7 DIAS / MÊS" */
 .nav-pills .nav-link.active {
   background-color: #23275c !important;
   color: white !important;
@@ -42,7 +37,6 @@
   font-family: 'Inter', 'Segoe UI', sans-serif;
 }
 
-/* FIX DEFINITIVO DO MENU INFERIOR */
 .bottom-nav {
   position: sticky; 
   bottom: 0;
@@ -58,7 +52,6 @@
   margin-top: auto; 
 }
 
-/* BOTÕES DO MENU INFERIOR */
 .nav-btn {
   flex: 1;
   background: none;
@@ -88,7 +81,6 @@
   grid-template-columns: repeat(7, 1fr);
 }
 
-/* EFEITOS DE CLIQUE NO CALENDÁRIO */
 .dia-clicavel {
   cursor: pointer;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
@@ -98,7 +90,6 @@
   box-shadow: 0 4px 10px rgba(35, 39, 92, 0.3) !important;
 }
 
-/* ANIMAÇÃO DO BOTTOM SHEET (TELA DE DETALHES) */
 .animacao-subir {
   animation: slideUp 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
 }

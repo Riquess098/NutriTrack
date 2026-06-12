@@ -33,14 +33,14 @@ public class RefeicaoController {
         return ResponseEntity.ok(salva);
     }
 
-   // 2. NOVA ROTA: Buscar o histórico completo do usuário (Atende ao RF15)
+   // 2. Situação/ rota 1 Buscar o histórico completo do usuário
     @GetMapping("/usuario/{usuarioId}")
     public ResponseEntity<List<Refeicao>> listarHistorico(@PathVariable Long usuarioId) {
         // Chamando o método com o nome blindado
         List<Refeicao> historico = refeicaoRepository.findByUsuario_IdOrderByDataRegistroDesc(usuarioId);
         return ResponseEntity.ok(historico);
     }
-    // 3. NOVA ROTA: Excluir uma refeição do histórico
+    // 3. Situação/ rota 2: Excluir uma refeição do histórico
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deletarRefeicao(@PathVariable Long id) {
         // Manda o banco apagar a refeição com esse ID específico

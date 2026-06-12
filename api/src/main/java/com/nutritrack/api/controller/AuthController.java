@@ -13,7 +13,7 @@ import java.util.Random;
 
 @RestController
 @RequestMapping("/api/auth")
-@CrossOrigin(origins = "*") // Permite que o Angular faça as requisições sem erro de CORS
+@CrossOrigin(origins = "*") // Permissão do Angular com o CORS
 public class AuthController {
 
     @Autowired
@@ -22,7 +22,7 @@ public class AuthController {
     @Autowired
     private EmailService emailService;
 
-    // Rota 1: O usuário digita o e-mail para receber o código
+    // Situação/ rota 1: O usuário digita o e-mail para receber o código
     @PostMapping("/esqueci-senha")
     public ResponseEntity<?> solicitarRecuperacao(@RequestBody Map<String, String> request) {
         String email = request.get("email");
@@ -34,7 +34,7 @@ public class AuthController {
 
         Usuario usuario = usuarioOpt.get();
         
-        // Gera um código aleatório de 6 dígitos (ex: 489123)
+        // Gera um código aleatório de 6 dígitos 
         String codigo = String.format("%06d", new Random().nextInt(999999));
         
         // Salva o código temporário no banco de dados
@@ -47,7 +47,7 @@ public class AuthController {
         return ResponseEntity.ok("Código de recuperação enviado para o e-mail.");
     }
 
-    // Rota 2: O usuário digita o código e a nova senha
+    // Situação/ rota 2: O usuário digita o código e a nova senha
     @PostMapping("/redefinir-senha")
     public ResponseEntity<?> redefinirSenha(@RequestBody Map<String, String> request) {
         String email = request.get("email");
@@ -67,7 +67,7 @@ public class AuthController {
             return ResponseEntity.badRequest().body("Código inválido ou expirado.");
         }
 
-        // Tudo certo! Atualiza a senha e apaga o código de recuperação por segurança
+        //Atualiza a senha e apaga o código de recuperação por segurança
         usuario.setSenha(novaSenha);
         usuario.setCodigoRecuperacao(null);
         usuarioRepository.save(usuario);

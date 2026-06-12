@@ -18,7 +18,7 @@ public class UsuarioController {
     @Autowired
     private UsuarioRepository usuarioRepository;
 
-    // --- MÉTODOS AUXILIARES DE SEGURANÇA (Evitam o erro 500) ---
+    
     private String getString(Map<String, Object> dados, String key) {
         return dados.get(key) != null ? dados.get(key).toString() : "";
     }
@@ -34,7 +34,7 @@ public class UsuarioController {
             return dados.get(key) != null ? Double.parseDouble(dados.get(key).toString()) : 0.0;
         } catch (Exception e) { return 0.0; }
     }
-    // -----------------------------------------------------------
+    
 
     @PostMapping("/cadastro")
     public ResponseEntity<Map<String, Object>> cadastrar(@RequestBody Usuario usuario) {
@@ -104,7 +104,7 @@ public class UsuarioController {
         try {
             Usuario usuario = usuarioOpt.get();
             
-            // Usando os métodos auxiliares de segurança para evitar erro 500
+            
             usuario.setObjetivo(getString(dados, "objetivo"));
             usuario.setIdade(getInt(dados, "idade"));
             usuario.setPeso(getDouble(dados, "peso"));
